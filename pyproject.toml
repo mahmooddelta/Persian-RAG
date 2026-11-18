@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "persian-rag-qa"
+version = "1.0.0"
+description = "Production-grade Persian Retrieval-Augmented Generation (RAG) Question-Answering System built with Clean Architecture"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "AI Engineering Assessment" }
+]
+dependencies = [
+    "pydantic>=2.10.0,<3.0.0",
+    "pydantic-settings>=2.7.0,<3.0.0",
+    "python-dotenv>=1.0.1,<2.0.0",
+    "pymupdf>=1.24.0,<2.0.0",
+    "qdrant-client>=1.12.0,<2.0.0",
+    "httpx>=0.27.0,<1.0.0",
+    "openai>=1.50.0,<3.0.0",
+    "tenacity>=8.2.0,<10.0.0",
+    "fastapi>=0.115.0,<1.0.0",
+    "uvicorn>=0.32.0,<1.0.0",
+    "typer>=0.12.0,<1.0.0",
+    "rich>=13.9.0,<15.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+    "pytest-asyncio>=0.24.0,<1.0.0",
+]
+
+[project.scripts]
+persian-rag = "src.presentation.cli:app"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
